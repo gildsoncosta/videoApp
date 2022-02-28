@@ -3,6 +3,8 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { IFilme } from '../models/iFilme.model';
 import { Title } from '@angular/platform-browser';
+import { DadosService } from '../services/dados.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class Tab1Page {
       duracao: '2h 10m',
       classificacao: 76,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pVL9AyKKLfUwrYD6jhdsI15gBQ7.jpg',
-      generos: ['Ação', 'Aventura', 'Thriller', 'Guerra']
+      generos: ['Ação', 'Aventura', 'Thriller', 'Guerra'],
+      pagina: '/kings-man-a-origem'
     },
     {
       nome: 'Ghostbusters: Mais Além (2021)',
@@ -38,12 +41,20 @@ export class Tab1Page {
       duracao: '1h 26m',
       classificacao: 10,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mg9Nlc1GXw0ihf1Ha0BSTZ5fd8D.jpg',
-      generos: ['Action', 'Adventure']
+      generos: ['Action', 'Adventure'],
+      pagina: '/liga-da-justica'
     }
   ];
 
-  constructor(public alertController: AlertController, public toastController: ToastController, private titleService: Title) {
-    this.titleService.setTitle(this.titulo);
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) { }
+
+  exibirFilme(filme: IFilme) {
+    this.dadosService.guardarDados('filme', filme);
+    this.route.navigateByUrl('/dados-filme');
   }
 
   async exibirAlertaFavorito() {
