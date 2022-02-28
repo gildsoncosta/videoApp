@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Videos App
-    </ion-title>
+  <ion-toolbar color="dark">
+    <io-title>{{titulo}}</io-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,23 +11,25 @@
 
   <ion-list>
 
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let filme of listaVideos">
 
       <ion-item lines="full">
-        <ion-thumbnail slot="end">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pVL9AyKKLfUwrYD6jhdsI15gBQ7.jpg">
+        <ion-thumbnail slot="start">
+          <img [src]="filme.cartaz">
         </ion-thumbnail>
 
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>King's Man: A Origem (2021)</h1>
-            <p>06/01/2022 (BR) - 2h 10m</p>
-            <p>Ação, Aventura, Thriller, Guerra</p>
+            <h1>{{filme.nome}}</h1>
+            <p>{{filme.lancamento}} (BR) - {{filme.duracao}}</p>
+            <ion-badge color="light" *ngFor="let genero of filme.generos">
+              {{genero}}
+            </ion-badge>
           </div>
         </ion-label>
 
         <ion-chip color="success" outline>
-          <ion-label>76%</ion-label>
+          <ion-label>{{filme.classificacao}}%</ion-label>
         </ion-chip>
       </ion-item>
 
@@ -39,35 +39,6 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
-
-    <ion-item-sliding>
-
-      <ion-item lines="full">
-        <ion-thumbnail slot="end">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/719aIhGrTrJ0yzkZ806Ea4rbonV.jpg">
-        </ion-thumbnail>
-
-        <ion-label class="ion-text-wrap">
-          <div>
-            <h1>Ghostbusters: Mais Além (2021)</h1>
-            <p>18/11/2021 (BR) - 2h 4m</p>
-            <p>Fantasia, Comédia, Aventura</p>
-          </div>
-        </ion-label>
-
-        <ion-chip color="success" outline>
-          <ion-label>76%</ion-label>
-        </ion-chip>
-      </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="laranja" (click)="exibirAlertaFavorito()">
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
 
   </ion-list>
 
