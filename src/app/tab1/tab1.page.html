@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-searchbar placeholder="Buscar">
+<ion-content [fullscreen]="true" color="light">
+  <ion-searchbar (ionChange)="buscarFilmes($event)" placeholder="Buscar">
 
   </ion-searchbar>
 
