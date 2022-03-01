@@ -5,7 +5,7 @@ import { IFilme } from '../models/iFilme.model';
 import { DadosService } from '../services/dados.service';
 import { Router } from '@angular/router';
 import { FilmeService } from '../services/filme.service';
-import { IListaFilmes } from '../models/IFilmeAPI.model';
+import { IFilmesApi, IListaFilmes } from '../models/IFilmeAPI.model';
 
 
 @Component({
@@ -67,7 +67,7 @@ export class Tab1Page {
     }
   }
 
-  exibirFilme(filme: IFilme) {
+  exibirFilme(filme: IFilmesApi) {
     this.dadosService.guardarDados('filme', filme);
     this.route.navigateByUrl('/dados-filme');
   }
