@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'kings-man-a-origem',
-    loadChildren: () => import('./filmes/kings-man-a-origem/kings-man-a-origem.module').then( m => m.KingsManAOrigemPageModule)
-  },
-  {
     path: 'dados-filme',
     loadChildren: () => import('./dados-filme/dados-filme.module').then( m => m.DadosFilmePageModule)
   }
